@@ -1,10 +1,10 @@
 {
   "name": "electronvolt",
   "version": "0.0.1",
-  "description": "",
+  "description": "A simple DOM-like event system",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/susisu/eV/issues"
   },
-  "homepage": "https://github.com/susisu/eV"
+  "homepage": "https://github.com/susisu/eV",
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "gulp": "^3.8.10",
+    "gulp-mocha": "^2.0.0",
+    "gulp-webpack": "^1.1.2"
+  }
 }
