@@ -17,7 +17,19 @@ describe("ev", function () {
     var EventNode       = ev.EventNode;
 
     describe("EventPhase", function () {
-        it("should have constant number properties to describe the phase of an event");
+        it("should have constant number properties to describe the phase of an event", function () {
+            expect(EventPhase).to.have.property("AT_TARGET");
+            expect(EventPhase).to.have.property("BUBBLING_PHASE");
+            expect(EventPhase).to.have.property("CAPTURING_PHASE");
+
+            expect(EventPhase.AT_TARGET).to.be.a("number");
+            expect(EventPhase.BUBBLING_PHASE).to.be.a("number");
+            expect(EventPhase.CAPTURING_PHASE).to.be.a("number");
+
+            expect(EventPhase.AT_TARGET).not.to.equal(EventPhase.BUBBLING_PHASE);
+            expect(EventPhase.AT_TARGET).not.to.equal(EventPhase.CAPTURING_PHASE);
+            expect(EventPhase.BUBBLING_PHASE).not.to.equal(EventPhase.CAPTURING_PHASE);
+        });
     });
 
     describe("Event", function () {
