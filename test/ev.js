@@ -143,12 +143,6 @@ describe("ev", function () {
             it("should create a new EventDispatcher object");
         });
 
-        describe("#getTarget()", function () {
-            it("should return the target of the dispatcher when the target is not 'undefined' or 'null'");
-
-            it("should return the dispatcher itself when the target is 'undefined' or 'null'");
-        });
-
         describe("#addEventListener(type, listener, useCapture = false, priority = 0)", function () {
             it("should register a listener for events of the specified type");
         });
