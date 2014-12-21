@@ -40,21 +40,21 @@ describe("ev", function () {
                     expect(event.type).to.equal("test");
                     expect(event.bubbles).to.be.true;
                     expect(event.cancelable).to.be.true;
-                });
+                })();
 
                 (function () {
                     var event = new Event("test", true);
                     expect(event.type).to.equal("test");
                     expect(event.bubbles).to.be.true;
                     expect(event.cancelable).to.be.false;
-                });
+                })();
 
                 (function () {
                     var event = new Event("test");
                     expect(event.type).to.equal("test");
                     expect(event.bubbles).to.be.false;
                     expect(event.cancelable).to.be.false;
-                });
+                })();
 
                 expect(function () { new Event(); }).to.throw(TypeError);
             });
