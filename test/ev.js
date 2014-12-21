@@ -171,6 +171,10 @@ describe("ev", function () {
             it("should return a new EventNode object");
         });
 
+        describe("#parentNode", function () {
+            it("should be the parent node object of this");
+        });
+
         describe("#willTrigger(type)", function () {
             it("should return true or false that describes whether the dispatcher and its parents has some listeners");
         });
