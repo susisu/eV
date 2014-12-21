@@ -16,7 +16,7 @@ describe("ev", function () {
     var EventDispatcher = ev.EventDispatcher;
     var EventNode       = ev.EventNode;
 
-    describe("EventPhase", function () {
+    describe("EventPhase:Object", function () {
         it("should have constant number properties to describe the phase of an event", function () {
             expect(EventPhase).to.have.property("AT_TARGET");
             expect(EventPhase).to.have.property("BUBBLING_PHASE");
@@ -33,59 +33,107 @@ describe("ev", function () {
     });
 
     describe("Event", function () {
-        describe("constructor(type, bubbles, cancelable)", function () {
-            it("should create a new Event object");
+        describe("constructor(type:String, bubbles:Boolean = false, cancelable:Boolean = false)", function () {
+            it("should create a new Event object", function () {
+                (function () {
+                    var event = new Event("test", true, true);
+                    expect(event.type).to.equal("test");
+                    expect(event.bubbles).to.be.true;
+                    expect(event.cancelable).to.be.true;
+                });
+
+                (function () {
+                    var event = new Event("test", true);
+                    expect(event.type).to.equal("test");
+                    expect(event.bubbles).to.be.true;
+                    expect(event.cancelable).to.be.false;
+                });
+
+                (function () {
+                    var event = new Event("test");
+                    expect(event.type).to.equal("test");
+                    expect(event.bubbles).to.be.false;
+                    expect(event.cancelable).to.be.false;
+                });
+
+                expect(function () { new Event(); }).to.throw(TypeError);
+            });
         });
 
-        describe("#type", function () {
-            it("should be a string that describes the type of the event");
+        describe("#type:String", function () {
+            it("should be a string that describes the type of the event", function () {
+                var event = new Event("test", true, true);
+                expect(event.type).to.equal("test");
+            });
         });
 
-        describe("#bubbles", function () {
-            it("should be true or false that describes whether the event will bubble or not");
+        describe("#bubbles:Boolean", function () {
+            it("should be true or false that describes whether the event will bubble or not", function () {
+                var event = new Event("test", true, true);
+                expect(event.bubbles).to.be.true;
+            });
         });
 
-        describe("#cancelable", function () {
-            it("should be true or false that describes whether the event is cancelable or not");
+        describe("#cancelable:Boolean", function () {
+            it("should be true or false that describes whether the event is cancelable or not", function () {
+                var event = new Event("test", true, true);
+                expect(event.cancelable).to.be.true;
+            });
         });
 
-        describe("#eventPhase", function () {
-            it("should be a  the phase of the event");
+        describe("#eventPhase:Number", function () {
+            it("should be a number that describes the phase of the event");
         });
 
-        describe("#target", function () {
+        describe("#target:Object", function () {
             it("should be the target of the event");
         });
 
-        describe("#currentTarget", function () {
+        describe("#currentTarget:Object", function () {
             it("should be the current target of the event");
         });
 
-        describe("#clone()", function () {
+        describe("#clone():Event", function () {
             it("should return a copy of the event, only copy the 'type', 'bubbles' and 'cancelable' properties");
         });
 
-        describe("#formatToString(className, propNames)", function () {
-            it("should return a string representation of the event of the specified format");
+        describe("#formatToString(className:String, propNames:Array):String", function () {
+            it("should return a string representation of the event of the specified format", function () {
+                var event = new Event("test", true, true);
+                expect(event.formatToString("Event", ["type", "bubbles", "cancelable"]))
+                    .to.equal("[Event type=\"test\" bubbles=true cancelable=true]");
+                expect(event.formatToString("FooEvent", ["type", "bubbles", "cancelable"]))
+                    .to.equal("[FooEvent type=\"test\" bubbles=true cancelable=true]");
+                expect(event.formatToString("Event", ["bubbles", "cancelable", "type"]))
+                    .to.equal("[Event bubbles=true cancelable=true type=\"test\"]");
+                expect(event.formatToString("Event", ["type", "bubbles"]))
+                    .to.equal("[Event type=\"test\" bubbles=true]");
+                expect(event.formatToString("Event", ["type"]))
+                    .to.equal("[Event type=\"test\"]");
+                expect(function () { event.formatToString(undefined, []); }).to.throw(TypeError);
+            });
         });
 
-        describe("#toString()", function () {
-            it("should return a string representation of the event");
+        describe("#toString():String", function () {
+            it("should return a string representation of the event", function () {
+                var event = new Event("test", true, true);
+                expect(event.toString()).to.equal("[Event type=\"test\" bubbles=true cancelable=true]");
+            });
         });
 
-        describe("#isDefaultPrevented()", function () {
+        describe("#isDefaultPrevented():Boolean", function () {
             it("should return true or false that describes wheter the default action of the event is prevented or not");
         });
 
-        describe("#preventDefault()", function () {
+        describe("#preventDefault():void", function () {
             it("should prevent the default action of the event");
         });
 
-        describe("#stopPropagation()", function () {
+        describe("#stopPropagation():void", function () {
             it("should stop the propagation of the event");
         });
 
-        describe("#stopImmediatePropagation()", function () {
+        describe("#stopImmediatePropagation():void", function () {
             it("should stop the propagation of the event immediately");
         });
     });
