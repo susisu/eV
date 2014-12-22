@@ -14,8 +14,8 @@ gulp.task("webpack", function () {
     return gulp.src("./lib/ev.js")
         .pipe(webpack({
             "output": {
-                "libraryTarget": "this",
-                "library": "ev",
+                "libraryTarget": "var",
+                "library": "electronvolt",
                 "sourcePrefix": "    ",
                 "filename": "ev." + packageInfo.version + ".js"
             },
@@ -33,8 +33,8 @@ gulp.task("webpack-min", function () {
     return gulp.src("./lib/ev.js")
         .pipe(webpack({
             "output": {
-                "libraryTarget": "this",
-                "library": "ev",
+                "libraryTarget": "var",
+                "library": "electronvolt",
                 "sourcePrefix": "    ",
                 "filename": "ev." + packageInfo.version + ".min.js",
             },
