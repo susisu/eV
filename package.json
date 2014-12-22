@@ -1,6 +1,6 @@
 {
   "name": "electronvolt",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A simple DOM-like event system",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "https://github.com/susisu/eV.git"
   },
   "keywords": [
-    "event"
+    "event, events, observer, listener"
   ],
   "author": "Susisu <susisu2413@yahoo.co.jp> (https://github.com/susisu)",
   "license": "MIT",
