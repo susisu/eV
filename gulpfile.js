@@ -3,7 +3,8 @@ var gulp    = require("gulp"),
     webpack = require("gulp-webpack");
 
 var packageInfo = require("./package.json");
-var banner = "eV\ncopyright (c) 2014 Susisu | MIT License\nhttps://github.com/susisu/eV";
+var banner = "eV " + packageInfo.version +
+    "\ncopyright (c) 2014-2015 Susisu | MIT License\nhttps://github.com/susisu/eV";
 
 gulp.task("test", function () {
     return gulp.src("./test/ev.js")
@@ -17,7 +18,7 @@ gulp.task("webpack", function () {
                 "libraryTarget": "var",
                 "library": "electronvolt",
                 "sourcePrefix": "    ",
-                "filename": "ev." + packageInfo.version + ".js"
+                "filename": "ev.js"
             },
             "plugins": [
                 new webpack.webpack.BannerPlugin(
@@ -26,7 +27,7 @@ gulp.task("webpack", function () {
                 )
             ]
         }))
-        .pipe(gulp.dest("./build"));
+        .pipe(gulp.dest("./dist"));
 });
 
 gulp.task("webpack-min", function () {
@@ -36,7 +37,7 @@ gulp.task("webpack-min", function () {
                 "libraryTarget": "var",
                 "library": "electronvolt",
                 "sourcePrefix": "    ",
-                "filename": "ev." + packageInfo.version + ".min.js",
+                "filename": "ev.min.js",
             },
             "plugins": [
                 new webpack.webpack.optimize.UglifyJsPlugin(),
@@ -46,7 +47,7 @@ gulp.task("webpack-min", function () {
                 )
             ]
         }))
-        .pipe(gulp.dest("./build"));
+        .pipe(gulp.dest("./dist"));
 });
 
 gulp.task("build", ["webpack", "webpack-min"]);

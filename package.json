@@ -21,7 +21,7 @@
   "homepage": "https://github.com/susisu/eV",
   "devDependencies": {
     "chai": "^1.10.0",
-    "gulp": "^3.8.10",
+    "gulp": "^3.9.0",
     "gulp-mocha": "^2.0.0",
     "gulp-webpack": "^1.1.2"
   }
