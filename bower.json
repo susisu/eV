@@ -1,0 +1,25 @@
+{
+  "name": "electronvolt",
+  "main": "dist/ev.min.js",
+  "version": "1.0.2",
+  "homepage": "https://github.com/susisu/eV",
+  "authors": [
+    "Susisu <susisu2413@yahoo.co.jp>"
+  ],
+  "description": "A simple DOM-like event system",
+  "keywords": [
+    "event",
+    "events",
+    "observer",
+    "listener"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "dev"
+  ]
+}
